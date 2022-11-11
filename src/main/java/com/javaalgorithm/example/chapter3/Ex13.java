@@ -9,8 +9,7 @@ import java.util.Queue;
 
 public class Ex13 {
     public static void main(String[] args) throws IOException {
-        List<String> lines = Files.
-                readAllLines(Path.of("src/main/java/com/javaalgorithm/example/chapter3/params/ex13.txt"));
+        List<String> lines = Files.readAllLines(Path.of("src/main/java/com/javaalgorithm/example/chapter3/params/ex13.txt"));
         int n = Integer.parseInt(lines.get(0));
 
         Queue<Integer> queue = new LinkedList<>();
