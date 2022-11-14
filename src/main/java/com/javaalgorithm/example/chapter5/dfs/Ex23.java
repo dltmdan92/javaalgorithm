@@ -37,7 +37,7 @@ public class Ex23 {
 
 
         for (int i = 1; i <= nodeCount; i++) {
-            if (!visited[i]) {
+            if (isVisitable(visited, i)) {
                 result++;
                 visit(visited, i);
                 DFS(i, map, visited);
@@ -50,11 +50,15 @@ public class Ex23 {
         List<Integer> destinations = map.get(num);
 
         for (int destination : destinations) {
-            if (!visited[destination]) {
+            if (isVisitable(visited, destination)) {
                 visit(visited, destination);
                 DFS(destination, map, visited);
             }
         }
+    }
+
+    private static boolean isVisitable(boolean[] visited, int i) {
+        return !visited[i];
     }
 
     private static void visit(boolean[] visited, int destination) {
