@@ -35,27 +35,26 @@ public class Ex23 {
 
         int result = 0;
 
-        Stack<Integer> stack = new Stack<>();
 
         for (int i = 1; i <= nodeCount; i++) {
             if (!visited[i]) {
                 result++;
                 visit(visited, i);
-                stack.add(i);
-
-                while (!stack.isEmpty()) {
-                    Integer pop = stack.pop();
-                    List<Integer> destinations = map.get(pop);
-                    for (int destination : destinations) {
-                        if (!visited[destination]) {
-                            visit(visited, destination);
-                            stack.add(destination);
-                        }
-                    }
-                }
+                DFS(i, map, visited);
             }
         }
         System.out.println(result);
+    }
+
+    private static void DFS(int num, List<List<Integer>> map, boolean[] visited) {
+        List<Integer> destinations = map.get(num);
+
+        for (int destination : destinations) {
+            if (!visited[destination]) {
+                visit(visited, destination);
+                DFS(destination, map, visited);
+            }
+        }
     }
 
     private static void visit(boolean[] visited, int destination) {
